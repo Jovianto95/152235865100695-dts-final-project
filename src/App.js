@@ -2,15 +2,15 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 import DetailGames from './Containers/GameDetail';
-import Login from './containers/Login';
-import Register from './containers/Register';
-import About from './containers/About';
-import Contact from './containers/Contact';
-import ProtectedRoute from './components/ProtectedRoute';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './containers/Home';
-import theme from './themes/theme';
+import Login from './Containers/Login';
+import Register from './Containers/Register';
+import About from './Containers/About';
+import Contact from './Containers/Contact';
+import ProtectedRoute from './Components/ProtectedComp';
+import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
+import Home from './Containers/Home';
+import theme from './Theme/theme';
 import React from 'react';
 
 function App() {
