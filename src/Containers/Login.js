@@ -3,7 +3,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Authentications/firebase";
 import { Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
 import { Link, useNavigate} from 'react-router-dom';
-import {LockOutlinedIcon} from '@mui/icons-material';
 import NavBar from '../Components/Navbar';
 
 const Login = () => {
@@ -35,7 +34,7 @@ const Login = () => {
                 alignItems: 'center'
             }}>
                 <Avatar sx={{m:1, bgcolor: 'secondary.main'}}>
-                    <LockOutlinedIcon />
+                    
                 </Avatar>
                 <Typography component='h1' variant='h5'>
                     Devil's Games
