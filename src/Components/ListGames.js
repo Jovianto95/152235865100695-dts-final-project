@@ -1,32 +1,101 @@
 import React, { useEffect, useState} from "react";
 import games from "../apis/games";
-import { Box, Typography, CardContent, CardMedia } from "@mui/material";
+import { Box, Typography, CardContent, CardMedia, Container, TextField } from "@mui/material";
 import {Link} from 'react-router-dom';
-import {Card} from 'react-bootstrap';
+import {Card, Container} from 'react-bootstrap';
 
-const ListGames = ()=>{
-    const [search, setSearch] = useState('')
+const ListGames = () => {
     const [games, setGames] = useState([]);
-    const baseUrlGames = 'https://api.rawg.io/api';
-
-    useEffect(()=> {
-        const fetchDataGames = async (query) => {
-            try {
-                let response;
-                if (!query.length) {
-                    response = await games.get('/games');
-                } else if (query.length) {
-                    setGames ([]);
-                    response = await games.get(`.games?seacrh=${query.toLowerCase()}`);
-                }
-                setGames(response.data.results);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchDataGames(search);
-    }, [search]);
-
-};
+    const baseUrlForGame = "https://api.rawg.io/api/games";
+  
+    useEffect(() => {
+      const fetchDataGames = async () => {
+        try {
+          // Gunakan instance tmdb di sini
+          const responseRAWG = await games.get(
+            // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
+            "/games"
+          );
+          // Jangan lupa set statenya
+          // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
+          setGames(responseRAWG.data.results);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchDataGames();
+    }, []);
+  
+    return (
+      <>
+        <Typography
+          sx={{
+            padding: "1em",
+            textAlign: "center",
+            backgroundColor: "#3E065F",
+            color: "white",
+            margin: "1em",
+          }}
+        >
+          TV
+        </Typography>
+        <Swiper
+          breakpoints={{
+  
+          0: {
+            slidesPerView: 2,
+          },
+          
+          600: {
+            slidesPerView: 5,
+          },
+          700: {
+            slidesPerView: 7,
+          },
+          1000: {
+            slidesPerView: 9,
+          }
+          }}
+          spaceBetween={5}
+          autoplay
+  
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          {games.map((game) => {
+            return (
+              <SwiperSlide key={games.id}>
+                <Card className="boxy" sx={{ margin: "5px" }}>
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/DetailFilm/${movie.id}`}
+                  >
+                    <Box className="boxy" sx={{ width: "10em" }}>
+                      <CardMedia
+                        component="img"
+                        image={`${baseUrlForGame}${game.background_image}`}
+                        alt={game.name}
+                      ></CardMedia>
+                      <CardContent>
+                        <Typography component="div" variant="body1">
+                          {game.name}
+                        </Typography>
+                        <Rating
+                          value={game.rating}
+                          precision={0.1}
+                          readOnly
+                        />
+                      </CardContent>
+                    </Box>
+                  </Link>
+                </Card>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </>
+    );
+  };
 
 export default ListGames;
