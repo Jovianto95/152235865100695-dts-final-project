@@ -1,7 +1,8 @@
 import React from 'react';
 import {Box, AppBar, Toolbar, Typography,
      alpha, InputBase, styled, ListItemSecondaryAction} from '@mui/material';
-import {MovieFilter, SearchIcon} from "@mui/icons-material";
+import {MovieFilter} from "@mui/icons-material";
+import SearchIcon from '@mui/icons-material/Search';
 import {Link, NavLink} from 'react-router-dom';
 import MenuLogout from './Logout';
 
