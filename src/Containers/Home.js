@@ -28,7 +28,10 @@ const Home = () => {
                 const sorted = [...game].sort((a,b) => a.rating - b.rating);
                 setGames(sorted);
             }
-        }
+            if (type === 'desc') {
+                const sorted = [...game].sort((a, b) => b.rating - a.rating);
+                setGames(sorted);
+        } }
         sortGames(queryParams.get('sort'));
     }, [queryParams, gamesReady]);
 

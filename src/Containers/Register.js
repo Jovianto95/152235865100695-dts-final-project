@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import {Box, Typography, Button, Container, Grid, TextField, Avatar} from '@mui/material';
 import {auth} from '../Authentications/firebase';
 import {Link, useNavigate} from 'react-router-dom';
