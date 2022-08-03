@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Authentications/firebase";
-import { Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
 import { Link, useNavigate} from 'react-router-dom';
 import NavBar from '../Components/Navbar';
 

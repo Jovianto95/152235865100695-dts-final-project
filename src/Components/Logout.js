@@ -40,7 +40,7 @@ const MenuLogout = () => {;
             <AccountCircle />
         </IconButton>
         <Menu
-            anchorEl={anchorEL}
+            anchorEl={anchorEl}
             id='account-menu'
             open={open}
             onClose={handleClose}
