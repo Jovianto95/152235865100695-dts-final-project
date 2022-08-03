@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
 import {Box, Button} from '@mui/material';
-import {games} from '../apis/games';
+import games from '../apis/games';
 import GameCard from '../Components/GameCard';
 
 const Home = () => {
