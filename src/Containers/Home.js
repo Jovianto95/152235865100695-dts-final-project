@@ -1,67 +1,79 @@
-import React, {useEffect, useState} from 'react';
-import {useSearchParams} from 'react-router-dom';
-import {Box, Button} from '@mui/material';
+
+import { Box, Button } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import React from 'react';
 import games from '../apis/games';
 import GameCard from '../Components/GameCard';
 
+
 const Home = () => {
     const [queryParams, setQueryParams] = useSearchParams();
-    const [game, setGames] = useState([]);
-    const [gamesReady, setGamesReady] = useState(false);
+    const [movies, setMovies] = useState([]);
+    const [moviesReady, setMoviesReady] = useState(false);
 
-    useEffect(()=> {
-        const fetchGames = async () => {
+    useEffect(() => {
+        const fetchMovies = async () => {
             try {
-                const fetchedGames = await games.get('/games/popular')
-                setGames(fetchedGames.data.results);
-                setGamesReady(true);
+                const fetchedMovies = await games.get("games");
+                setMovies(fetchedMovies.data.results);
+                setMoviesReady(true);
             } catch (error) {
                 console.log(error);
             }
-        }; fetchGames()
+        }
+
+        fetchMovies();
     }, []);
 
-    useEffect (() => {
-        if (!gamesReady) return;
-        const sortGames = (type) => {
+    useEffect(() => {
+        if (!moviesReady) return;
+        const sortMovies = (type) => {
             if (type === 'asc') {
-                const sorted = [...game].sort((a,b) => a.rating - b.rating);
-                setGames(sorted);
+                const sorted = [...movies].sort((a, b) => a.rating - b.rating);
+                setMovies(sorted);
             }
             if (type === 'desc') {
-                const sorted = [...game].sort((a, b) => b.rating - a.rating);
-                setGames(sorted);
-        } }
-        sortGames(queryParams.get('sort'));
-    }, [queryParams, gamesReady]);
+                const sorted = [...movies].sort((a, b) => b.rating - a.rating);
+                setMovies(sorted);
+            }
+        }
+
+        sortMovies(queryParams.get('sort'));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [queryParams, moviesReady]);
 
     const setSortParam = (type) => {
-        queryParams.set('sort', type);
+        queryParams.set("sort", type);
         setQueryParams(queryParams);
-    };
+    }
 
     return (
-        <Box sx = {{
-            display:'flex',
+        <Box sx={{
+            display: 'flex',
             flexDirection: 'column',
-            mt: 5
+            mt: 5,
         }}>
             <Box sx={{
                 mt: 5,
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'flex-end',
-                alignItems: 'center', 
+                alignItems: 'center',
             }}>
                 Sort by Rating
-                <Button variant='contained'
-                        sx={{ml:2}}
-                        onClick={()=> setSortParam('asc')}>
+                <Button
+                    variant="contained"
+                    sx={{ ml: 2 }}
+                    onClick={() => setSortParam("asc")}
+                >
                     Asc
                 </Button>
-                <Button variant='contained'
-                        sx={{ml:2}}
-                        onClick={()=> setSortParam('desc')}>
+                <Button
+                    variant="contained"
+                    sx={{ ml: 2, mr: 2 }}
+                    onClick={() => setSortParam("desc")}
+                >
                     Desc
                 </Button>
             </Box>
@@ -71,12 +83,14 @@ const Home = () => {
                 flexWrap: 'wrap',
                 justifyContent: 'space-between',
             }}>
-                {game.map(game=>{
-                    <GameCard key={game.name} game={game} />
-                })}
+                {
+                    movies.map(movie => (
+                        <GameCard key={movie.title} movie={movie}></GameCard>
+                    ))
+                }
             </Box>
         </Box>
-    )
-};
+    );
+}
 
 export default Home;
