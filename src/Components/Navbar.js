@@ -2,7 +2,7 @@ import React from 'react';
 import {Box, AppBar, Toolbar, Typography,
      alpha, InputBase, styled, ListItemSecondaryAction} from '@mui/material';
 import {MovieFilter, SearchIcon} from "@mui/icons-material";
-import {Link, Navlink} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import Logout from './Logout';
 
 const Search = styled('div')(({theme}) => ({
@@ -79,12 +79,12 @@ const Navbar = ()=>{
                     <Box sx={{flexGrow:1}} />
                     <Box sx={{display: 'block'}}>
                         {navItems.map((item)=>(
-                            <Navlink to={item.link}
+                            <NavLink to={item.link}
                                 key={item.text}
                                 className={({isActive})=> isActive?'nav-active':'nav-inactive'}
                                 >
                                 {item.text}
-                            </Navlink>
+                            </NavLink>
                         ))};
                         <Logout />
                     </Box>
