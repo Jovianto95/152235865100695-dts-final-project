@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import games from "../apis/games";
 import GameCard from "../Components/GameCard";
 
+
 const sortRatingAsc = (a,b) => a.rating - b.rating;
 const sortRatingDesc = (a,b) => sortRatingAsc (b,a);
 
@@ -12,12 +13,12 @@ const sortRating = (sort = 'asc') =>
 
 const GamesList = () => {
     const [queryParams, setQueryParams] = useSearchParams();
-    const [games, setGames] = useState ([]);
+    const [game, setGames] = useState ([]);
 
     useEffect(() => {
         const fetchGames = async () => {
             try {
-                const fetchedGames = await games.get('games');
+                const fetchedGames = await games.get('/games');
                 setGames(fetchedGames.data.results);
             } catch (error) {
                 console.log(error);
@@ -34,8 +35,8 @@ const setSortParam = (type) => {
 const sort = queryParams.get('sort');
 
 const sortedGames = useMemo(()=> {
-    return games.slice().sort(sortRating(sort));
-}, [games, sort]);
+    return game.slice().sort(sortRating(sort));
+}, [game, sort]);
 
 return (
     <Box sx = {{
@@ -60,7 +61,7 @@ return (
         </Box>
         <Box>
             {sortedGames.map((games) => {
-                <GameCard key={games.name} game = {games} />
+                <GameCard key={JSON.parse(games.data).name} game = {games} />
             })}
         </Box>
     </Box>

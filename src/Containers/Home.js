@@ -15,7 +15,7 @@ const Home = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const fetchedMovies = await games.get("games");
+                const fetchedMovies = await games.get("/games");
                 setMovies(fetchedMovies.data.results);
                 setMoviesReady(true);
             } catch (error) {
@@ -84,8 +84,8 @@ const Home = () => {
                 justifyContent: 'space-between',
             }}>
                 {
-                    movies.map(movie => (
-                        <GameCard key={movie.title} movie={movie}></GameCard>
+                    movies.map(game => (
+                        <GameCard key={JSON.parse(game.data).name} movie={game}></GameCard>
                     ))
                 }
             </Box>

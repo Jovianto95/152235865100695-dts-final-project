@@ -8,7 +8,7 @@ const GameDetail = ({ data }) => {
     <div>
       <div className="detail-game-poster">
         <div className="detail-game-poster-contain">
-          <h1>{`${data.title}`}</h1>
+          <h1>{`${JSON.parse(data.data).name}`}</h1>
           <div className="button-group">
             <button className="play-button">
               <img src="/play-button.png" className="play-icon" alt="" />
@@ -38,13 +38,13 @@ const GameDetail = ({ data }) => {
 
         <img
           className="detail-game-poster-image"
-          src={`${baseImgURL}${data.background_image}`}
+          src={`${baseImgURL}${JSON.parse(data.data).background_image}`}
           alt=""
         />
       </div>
-      <div className="detail-movie-description">
+      <div className="detail-game-description">
         <h3>Description</h3>
-        <p>{data.description}</p>
+        <p>{JSON.parse(data.data).description_raw}</p>
       </div>
     </div>
     </>
