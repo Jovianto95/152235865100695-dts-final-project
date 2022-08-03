@@ -6,15 +6,15 @@ import {Card, Container} from 'react-bootstrap';
 
 const ListGames = () => {
     const [games, setGames] = useState([]);
-    const baseUrlForGame = "https://api.rawg.io/api/games";
-  
+    const baseUrlForGame = "https://api.rawg.io/api";
+    const id = url.split("/games/")[1];
     useEffect(() => {
       const fetchDataGames = async () => {
         try {
           // Gunakan instance tmdb di sini
           const responseRAWG = await games.get(
             // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
-            "/games"
+            `/games/${id}`
           );
           // Jangan lupa set statenya
           // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
