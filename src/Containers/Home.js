@@ -6,7 +6,7 @@ import GameCard from '../Components/GameCard';
 
 const Home = () => {
     const [queryParams, setQueryParams] = useSearchParams();
-    const [games, setGames] = useState([]);
+    const [game, setGames] = useState([]);
     const [gamesReady, setGamesReady] = useState(false);
 
     useEffect(()=> {
@@ -25,7 +25,7 @@ const Home = () => {
         if (!gamesReady) return;
         const sortGames = (type) => {
             if (type === 'asc') {
-                const sorted = [...games].sort((a,b) => a.rating - b.rating);
+                const sorted = [...game].sort((a,b) => a.rating - b.rating);
                 setGames(sorted);
             }
         }
@@ -68,7 +68,7 @@ const Home = () => {
                 flexWrap: 'wrap',
                 justifyContent: 'space-between',
             }}>
-                {games.map(game=>{
+                {game.map(game=>{
                     <GameCard key={game.name} game={game} />
                 })}
             </Box>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, AppBar, Toolbar, Typography,
-     alpha, InputBase, styled, ListItemSecondaryAction} from '@mui/material';
+     alpha, InputBase, styled} from '@mui/material';
 import {MovieFilter} from "@mui/icons-material";
 import SearchIcon from '@mui/icons-material/Search';
 import {Link, NavLink} from 'react-router-dom';

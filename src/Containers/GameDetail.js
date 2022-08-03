@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const DetailGames = () => {
     let params = useParams();
-    const [games, setGames] = useState([]);
+    const [game, setGames] = useState([]);
 
     const idGames = params.id;
     useEffect(()=> {
@@ -21,7 +21,7 @@ const DetailGames = () => {
 
     return (
         <>
-        <GameDetail data = {games} />
+        <GameDetail data = {game} />
         </>
     )
 };
