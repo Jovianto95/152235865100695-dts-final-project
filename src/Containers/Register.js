@@ -3,7 +3,6 @@ import {Box, Typography, Button, Container, Grid, TextField, Avatar} from '@mui/
 import {auth} from '../Authentications/firebase';
 import {Link, useNavigate} from 'react-router-dom';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import {LockOutlinedIcon} from '@mui/icons-material';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -32,7 +31,7 @@ const Register = () => {
                 alignItems:'center'}}>
                     <Avatar sx={{m:1,
                         bgcolor: 'secondary.main'}}>
-                        <LockOutlinedIcon /></Avatar>
+                    </Avatar>
                     <Typography component='h1' variant='h5'>
                         Sign Up
                     </Typography>
