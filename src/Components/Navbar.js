@@ -3,7 +3,7 @@ import {Box, AppBar, Toolbar, Typography,
      alpha, InputBase, styled, ListItemSecondaryAction} from '@mui/material';
 import {MovieFilter, SearchIcon} from "@mui/icons-material";
 import {Link, NavLink} from 'react-router-dom';
-import Logout from './Logout';
+import MenuLogout from './Logout';
 
 const Search = styled('div')(({theme}) => ({
     position:'relative',
@@ -86,7 +86,7 @@ const Navbar = ()=>{
                                 {item.text}
                             </NavLink>
                         ))};
-                        <Logout />
+                        <MenuLogout />
                     </Box>
                 </Toolbar>
             </AppBar>

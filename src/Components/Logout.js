@@ -6,7 +6,7 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import {NavLink, useNavigate} from 'react-router-dom';
 import {auth} from '../Authentications/firebase';
 
-const Logout = () => {;
+const MenuLogout = () => {;
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -90,4 +90,4 @@ const Logout = () => {;
       LOGIN
     </NavLink>)
     }
-export default Logout;
+export default MenuLogout;
