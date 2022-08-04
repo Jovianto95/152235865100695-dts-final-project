@@ -3,12 +3,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import games from '../apis/games';
 
 const baseImageURL = "https://api.rawg.io/api";
 
-const GameCard = ({ game }) => {
+const GameCard = () => {
   const [game, setGames] = useState([]);
 
 	useEffect(() => {
