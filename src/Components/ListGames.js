@@ -4,27 +4,22 @@ import { Box, Typography, CardContent, CardMedia, Container, TextField } from "@
 import {Link} from 'react-router-dom';
 import {Card, Container} from 'react-bootstrap';
 
-const ListGames = () => {
-    const [games, setGames] = useState([]);
+const ListGames = (props) => {
+    const [game, setGames] = useState([]);
     const baseUrlForGame = "https://api.rawg.io/api";
-    const id = url.split("/games/")[1];
     useEffect(() => {
       const fetchDataGames = async () => {
         try {
-          // Gunakan instance tmdb di sini
-          const responseRAWG = await games.get(
-            // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
-            `/games/${id}`
+          const responseRAWG = await games.get(props.url,{
+            params: props.queryParam}
           );
-          // Jangan lupa set statenya
-          // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-          setGames(responseRAWG.data);
+          setGames(responseRAWG.data.results);
         } catch (err) {
           console.log(err);
         }
       };
       fetchDataGames();
-    }, []);
+    }, [props.queryParam, props.url]);
   
     return (
       <>
@@ -63,18 +58,18 @@ const ListGames = () => {
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper"
         >
-          {games.map((game) => {
+          {game.map((game) => {
             return (
-              <SwiperSlide key={games.id}>
+              <SwiperSlide key={game.id}>
                 <Card className="boxy" sx={{ margin: "5px" }}>
                   <Link
                     style={{ textDecoration: "none" }}
-                    to={`/DetailFilm/${movie.id}`}
+                    to={`/${game.slug}`} key ={game.id}
                   >
                     <Box className="boxy" sx={{ width: "10em" }}>
                       <CardMedia
                         component="img"
-                        image={`${baseUrlForGame}${game.background_image}`}
+                        image={`${game.background_image}`}
                         alt={game.name}
                       ></CardMedia>
                       <CardContent>

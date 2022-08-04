@@ -1,5 +1,7 @@
 import {initializeApp} from 'firebase/app';
-import {getAuth} from 'firebase/auth';
+import {getAuth, createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signOut} from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyB-fwlcqQdbdhjRoTtVlwFGxJa6-_FxcRE",
@@ -14,4 +16,16 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  export {auth};
+  const registerWithEmailAndPassword = async (email, password) => {
+    await createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const loginWithEmailAndPassword = async (email, password) => {
+    await signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const logOut = async () => {
+    await signOut(auth);
+  }
+
+  export {auth, registerWithEmailAndPassword, loginWithEmailAndPassword, logOut};

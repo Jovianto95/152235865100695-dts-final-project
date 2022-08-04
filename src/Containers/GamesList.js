@@ -18,7 +18,9 @@ const GamesList = () => {
     useEffect(() => {
         const fetchGames = async () => {
             try {
-                const fetchedGames = await games.get('/games');
+                const fetchedGames = await games.get('/search', {
+                    params: {search: queryParams}
+                });
                 setGames(fetchedGames.data.results);
             } catch (error) {
                 console.log(error);

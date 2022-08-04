@@ -11,7 +11,7 @@ const DetailGames = () => {
     useEffect(()=> {
         const fetchGames = async () => {
             try {
-                const fetchedGames = await games.get(`games/${idGames}`);
+                const fetchedGames = await games.get(`/games/${idGames}`);
                 setGames(fetchedGames.data)
             } catch (error) {
                 console.log(error)
