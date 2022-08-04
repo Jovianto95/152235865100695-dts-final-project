@@ -16,7 +16,7 @@ const Home = () => {
         const fetchMovies = async () => {
             try {
                 const fetchedMovies = await games.get("/games");
-                setMovies(fetchedMovies.data.results);
+                setMovies(fetchedMovies.data);
                 setMoviesReady(true);
             } catch (error) {
                 console.log(error);

@@ -18,7 +18,7 @@ const ListGames = () => {
           );
           // Jangan lupa set statenya
           // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-          setGames(responseRAWG.data.results);
+          setGames(responseRAWG.data);
         } catch (err) {
           console.log(err);
         }
