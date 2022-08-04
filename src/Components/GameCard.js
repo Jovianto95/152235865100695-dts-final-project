@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import games from '../apis/games';
 
-const baseImageURL = "https://api.rawg.io/api";
+// const baseImageURL = "https://api.rawg.io/api";
 
 const GameCard = () => {
   const [game, setGames] = useState([]);
